@@ -4,7 +4,7 @@ import About from './About'; // Import the new page
 import Contact from './Contact'; //Import contact
 import Home from './Home'; //Import home
 import './App.css';
-
+import NavBar from './NavBar' //Import Navbar
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,22 +21,11 @@ function App() {
     setUsers([...users, newUser]);
   };
 
-
-  return (
+    return (
     <div>
       {/* Navigation */}
       <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-        </ul>
+        <NavBar />
       </nav>
       {/* Define Routes */}
       <Routes>
