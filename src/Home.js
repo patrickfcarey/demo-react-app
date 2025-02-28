@@ -2,20 +2,10 @@ import React, { useState } from 'react';
 
 
 
-function Home(){
-    const [count, setCount] = useState(0);
+function Home({users, addUser, count, setCount}){
+    console.log("Home users:", users); // Expect: [{ id: 1, name: "Alice" }, ...]
 
-  const [users, setUsers] = useState([
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" },
-    { id: 3, name: "Charlie" }
-  ]);
 
-  const addUser = () => {
-    const newUser = { id: users.length + 1, name: "New User" };
-    setUsers([...users, newUser]);
-  };
-  
     return (
         <div>
         <h1>Counter App</h1>
