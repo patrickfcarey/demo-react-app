@@ -14,12 +14,19 @@ function App() {
     { id: 3, name: "Charlie" }
   ]);
 
-  console.log("users in App:", users); // Should log an array
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility
+  const [newUserName, setNewUserName] = useState("");    // Input value
 
   const addUser = () => {
-    const newUser = { id: users.length + 1, name: "New User" };
-    setUsers([...users, newUser]);
+    if (newUserName.trim()) { // Only add if name isn’t empty
+      const newUser = { id: users.length + 1, name: newUserName.trim() };
+      setUsers([...users, newUser]);
+      setNewUserName(""); // Reset input
+      setIsModalOpen(false); // Close modal
+    }
   };
+
+
 
     return (
     <div>
@@ -29,7 +36,18 @@ function App() {
       </nav>
       {/* Define Routes */}
       <Routes>
-        <Route path="/"   element={<Home users={users} addUser={addUser} count={count} setCount={setCount} />} />
+        <Route path="/"   element={
+              <Home
+              users={users}
+              count={count}
+              setCount={setCount}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              newUserName={newUserName}
+              setNewUserName={setNewUserName}
+              addUser={addUser}
+              />
+        } />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
